@@ -1,0 +1,11 @@
+﻿/****************************/
+to use angularjs html extension.
+add namespace to the web.config in view folder.
+
+// convert enum to json
+<add namespace="RubikTuan.Framework.RubikHepler" />
+/**************/
+angularjs
+<add namespace="RubikTuan.Framework.MvcHepler" />
+
+// app.module(,['rubik-js'])

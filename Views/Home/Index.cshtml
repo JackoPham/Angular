@@ -1,0 +1,25 @@
+﻿@model AnguarjsHepler.Models.DemoModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    Demo angularjs valitions.
+</div>
+
+<div class="row" ng-controller="Demo.Manage as $vm">
+    <form sogoform="formTicket" name="formTicket" ng-submit="$vm.Save()" novalidate accessible-rubik>
+        <div class="modal-body admin-form">
+            <div class="form-group">
+                @Html.AngularTextBoxFor(x => x.Name, new { @class = "form-control" }, "$vm.area")
+            </div>
+            <div class="form-group">
+                @Html.AngularTextBoxFor(x => x.Address, new { @class = "form-control" }, "$vm.area")
+            </div>
+        </div>
+        <div class="modal-footer text-right">
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Lưu lại</button>
+            <div class="clearfix"></div>
+        </div>
+    </form>
+</div>

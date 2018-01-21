@@ -1,0 +1,42 @@
+﻿<div class="panel-footer bdtop-none">
+    <ul class="pagination pagination-sm mn" ng-if="totalPage > 1">
+        <li class="paginate_button previous" ng-class="{'disabled': pageNumber == 1}">
+            <a href="javascript:void(0);" ng-click="GoToPage(1, $event)">
+                <i class="fa fa-angle-double-left"></i>
+            </a>
+        </li>
+        <!--<li class="paginate_button previous" ng-class="{'disabled': pageNumber == 1}">
+            <a href="javascript:void(0);" ng-click="PreviousPage($event)"><i class="fa fa-chevron-left"></i></a>
+        </li>-->
+        <li class="paginate_button" ng-if="startNum > 1">
+            <a href="javascript:void(0);" ng-click="GoToPage(1, $event)">1</a>
+        </li>
+        <li class="paginate_button disabled" ng-if="startNum > 2"><a>...</a></li>
+        <li ng-repeat="i in getNumber(totalPage) track by $index" ng-class="{'active': pageNumber == $index + 1}"
+            ng-if="$index + 1 >= startNum && $index + 1 <= endNum">
+            <a href="javascript:void(0);" ng-click="GoToPage($index + 1, $event)">{{$index + 1}}</a>
+        </li>
+        <li class="paginate_button disabled" ng-if="endNum < totalPage - 1"><a>...</a></li>
+        <li class="paginate_button" ng-if="totalPage > CountShowPage && endNum < totalPage - 1" ng-class="{'active': pageNumber == totalPage}">
+            <a href="javascript:void(0);" ng-click="GoToPage(totalPage, $event)">{{totalPage}}</a>
+        </li>
+        <!--<li class="paginate_button next" ng-class="{'disabled': pageNumber >= totalPage}">
+            <a href="javascript:void(0);" ng-click="NextPage($event)">
+                <i class="fa fa-chevron-right"></i>
+            </a>
+        </li>-->
+        <li class="paginate_button previous" ng-class="{'disabled': pageNumber == totalPage}">
+            <a href="javascript:void(0);" ng-click="GoToPage(totalPage, $event)">
+                <i class="fa fa-angle-double-right"></i>
+            </a>
+        </li>
+    </ul>
+    <div class="pagination display-count" ng-if="IsShowCount">
+        Hiển thị
+        <select ng-model="rowPerPage" ng-options="item.value as item.name for item in listDisplayCount" ng-change="ChangePageSize(rowPerPage)"></select>
+        kết quả
+    </div>
+    <p class="pagination pagination-description">
+       <span ng-if="IsShowCount"> Hiển thị kết quả từ {{startIndex}} - {{endIndex}} trên tổng {{totalRow}}</span>
+    </p>
+</div>
